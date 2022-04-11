@@ -50,12 +50,6 @@ class RegisterFragment : Fragment() {
                 ).show()
             } else {
                 (binding.edtFullname.text!!.isNotEmpty() && binding.edtUsername.text!!.isNotEmpty() && binding.edtEmail.text!!.isNotEmpty() && binding.edtPassword.text!!.isNotEmpty())
-             /*   saveSession(
-                    binding.edtFullname.text.toString(),
-                    binding.edtUsername.text.toString(),
-                    binding.edtEmail.text.toString(),
-                    binding.edtPassword.text.toString()
-                )*/
 
                 Thread{
                     val resultdb =  dbuser?.userDao()?.insertUser(objectUser)
@@ -66,19 +60,14 @@ class RegisterFragment : Fragment() {
                             Toast.makeText(
                                 requireContext(),
                                 "Data berhasil ditambahkan", Toast.LENGTH_LONG).show()
-
                         }
                         else{
                             Toast.makeText(requireContext(),
                             "Data gagal ditambahkan", Toast.LENGTH_LONG).show()
                         }
 
-
                     }
-
-
                 }
-
                     .start()
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
 
@@ -86,12 +75,4 @@ class RegisterFragment : Fragment() {
         }
     }
 
-//
-/**    private fun saveSession(fullname: String, username: String, email: String, password: String) {
-        prefHelper.put(Constant.PREF_FULLNAME, fullname)
-        prefHelper.put(Constant.PREF_USERNAME, username)
-        prefHelper.put(Constant.PREF_EMAIL, email)
-        prefHelper.put(Constant.PREF_PASSWORD, password)
-        prefHelper.put(Constant.PREF_IS_REGISTER, true)
-    }*/
 }
